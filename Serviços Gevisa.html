@@ -1,0 +1,1124 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Serviços Gevisa</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600;700&family=Roboto+Serif:opsz,wdth,wght@8..144,50..150,100..900&display=swap">
+<style>
+/* Layout: purple masthead with the company plate and the "Novo serviço" button, one content column (max 1080px), five-tab bar at the bottom on phones that moves to the top on wide screens. */
+:root{
+  --bg:#F4F1F9; --surface:#FFFFFF; --field:#FAF8FD; --ink:#1B1526; --muted:#655C75; --line:#DDD6EA;
+  --brand:#6A00D4; --on-brand:#FFFFFF; --brand-soft:#EEE3FB; --mast:#5A00B8;
+  --plate:#14101C; --cyan:#33B1EA; --gold:#F3C434; --on-gold:#1B1526;
+  --in:#0A6A9C; --in-soft:#DCEFF9; --out:#6A00D4; --out-soft:#EEE3FB; --c-in:#2AA7E3; --c-out:#6A00D4;
+  --ok:#17783F; --ok-soft:#DCF2E4; --warn:#955700; --warn-soft:#FBE9C6; --bad:#B52639; --bad-soft:#FADCE0; --on-bad:#FFFFFF;
+  --f-display:'Roboto Serif', Georgia, 'Times New Roman', serif;
+  --f-body:'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono:'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#110C19; --surface:#1B1425; --field:#241B31; --ink:#F0EBF8; --muted:#A99FBC; --line:#352A49;
+    --brand:#B085FF; --on-brand:#170F24; --brand-soft:#2D1E46; --mast:#2A1055;
+    --plate:#0B070F; --cyan:#4DBBEF; --gold:#F3C434; --on-gold:#1B1526;
+    --in:#62C4F4; --in-soft:#112F3F; --out:#B993FF; --out-soft:#2D1E46; --c-in:#3DB3EC; --c-out:#A978FF;
+    --ok:#62D38F; --ok-soft:#163826; --warn:#F2B84B; --warn-soft:#3C2B0C; --bad:#FF8190; --bad-soft:#42191F; --on-bad:#1A0A0D;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#110C19; --surface:#1B1425; --field:#241B31; --ink:#F0EBF8; --muted:#A99FBC; --line:#352A49;
+  --brand:#B085FF; --on-brand:#170F24; --brand-soft:#2D1E46; --mast:#2A1055;
+  --plate:#0B070F; --cyan:#4DBBEF; --gold:#F3C434; --on-gold:#1B1526;
+  --in:#62C4F4; --in-soft:#112F3F; --out:#B993FF; --out-soft:#2D1E46; --c-in:#3DB3EC; --c-out:#A978FF;
+  --ok:#62D38F; --ok-soft:#163826; --warn:#F2B84B; --warn-soft:#3C2B0C; --bad:#FF8190; --bad-soft:#42191F; --on-bad:#1A0A0D;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.45 var(--f-body);padding-bottom:88px;-webkit-text-size-adjust:100%}
+h1,h2,h3,p{margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.muted{color:var(--muted)}
+
+/* Masthead */
+.mast{background:var(--mast);padding:14px 16px}
+.mast-in{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px 20px}
+.plate{background:var(--plate);padding:9px 14px 10px;display:inline-flex;flex-direction:column;gap:4px;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.1)}
+.plate-name{font-family:var(--f-display);font-stretch:50%;font-weight:800;font-size:2.3rem;line-height:.95;letter-spacing:.015em;color:var(--cyan)}
+.plate-rule{display:block;height:3px;background:var(--cyan);border-radius:2px}
+.plate-sub{font-family:var(--f-mono);font-weight:600;font-size:.66rem;line-height:1.25;letter-spacing:.05em;color:var(--gold);text-transform:uppercase}
+.mast-meta{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.sync{font:500 .72rem var(--f-mono);display:inline-flex;gap:6px;align-items:center;background:rgba(255,255,255,.15);padding:4px 10px;border-radius:99px;color:#fff;white-space:nowrap}
+.sync i{width:7px;height:7px;border-radius:50%;background:#7CE3A1;display:block}
+.sync.local i,.sync.wait i{background:var(--gold)}
+
+/* Tabs */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));background:var(--surface);border-top:1px solid var(--line);padding:4px 2px calc(4px + env(safe-area-inset-bottom,0px))}
+.tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-height:54px;min-width:0;border:0;background:none;border-radius:10px;color:var(--muted);font-size:.66rem;font-weight:600;padding:0 2px}
+.tab span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tab svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.tab[aria-current="page"]{color:var(--brand);background:var(--brand-soft)}
+
+/* Layout blocks */
+.wrap{max-width:1080px;margin:0 auto;padding:18px 16px 8px}
+.view{display:flex;flex-direction:column;gap:16px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}
+.panel h2{font-size:1rem;font-weight:700}
+.sub{color:var(--muted);font-size:.82rem;margin-top:2px}
+.phead{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.notice{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--warn-soft);color:var(--ink);border:1px solid var(--warn);border-radius:10px;padding:12px 14px;font-size:.88rem}
+.notice p{flex:1 1 260px;min-width:0}
+.notice.info{background:var(--in-soft);border-color:var(--in)}
+.foot{max-width:1080px;margin:0 auto;padding:12px 16px 20px;color:var(--muted);font:500 .72rem var(--f-mono);letter-spacing:.03em}
+.monthbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.mlabel{min-width:150px;text-align:center;font-weight:700}
+
+/* Stats strip */
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.stat{background:var(--surface);padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.stat-l{font:500 .68rem var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.stat-v{font:600 1.2rem/1.2 var(--f-mono);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.stat-s{font-size:.76rem;color:var(--muted)}
+.stat.warn .stat-v{color:var(--warn)}
+.stat.bad .stat-v{color:var(--bad)}
+.stat.good .stat-v{color:var(--ok)}
+
+/* Controls */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:40px;padding:0 14px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-weight:600;font-size:.9rem;white-space:nowrap}
+.btn:hover{border-color:var(--brand)}
+.btn.primary{background:var(--brand);border-color:var(--brand);color:var(--on-brand)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--on-gold)}
+.btn.sm{min-height:34px;padding:0 10px;font-size:.82rem}
+.btn.danger{background:var(--bad);border-color:var(--bad);color:var(--on-bad)}
+.btn.ghost{border-color:transparent;background:none;color:var(--brand)}
+.btn[disabled]{opacity:.55;cursor:not-allowed}
+.field{display:flex;flex-direction:column;gap:5px;min-width:0}
+.field>label,.lab{font:500 .72rem var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+input[type=text],input[type=search],input[type=date],input[type=time],select,textarea{width:100%;min-height:42px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink)}
+textarea{resize:vertical;min-height:72px}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+.toolbar .grow{flex:2 1 220px;min-width:0}
+.toolbar select{flex:1 1 150px;width:auto;min-width:0}
+.err{color:var(--bad);font-size:.84rem;min-height:1.2em}
+.warnbox{background:var(--warn-soft);border:1px solid var(--warn);border-radius:8px;padding:8px 10px;font-size:.86rem}
+.hint{color:var(--muted);font-size:.8rem}
+.chk{display:inline-flex;align-items:center;gap:8px;font-size:.88rem;min-height:34px}
+.chk input{width:18px;height:18px;margin:0;accent-color:var(--brand)}
+
+/* Pills */
+.pill{display:inline-flex;align-items:center;padding:2px 9px;border-radius:99px;font:600 .72rem var(--f-mono);letter-spacing:.03em;white-space:nowrap}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.low{background:var(--warn-soft);color:var(--warn)}
+.pill.zero{background:var(--bad-soft);color:var(--bad)}
+.pill.in{background:var(--in-soft);color:var(--in)}
+.pill.out{background:var(--out-soft);color:var(--out)}
+.pill.adj{background:var(--line);color:var(--ink)}
+
+/* Lists (rows become cards on phones) */
+.list{display:flex;flex-direction:column}
+.row{display:grid;gap:6px 12px;padding:12px 2px;border-top:1px solid var(--line);align-items:center;min-width:0}
+.list>.row:first-child{border-top:0}
+.row>*{min-width:0}
+.thead{display:none}
+.name{grid-area:name}
+.name .nm{display:block;border:0;background:none;padding:0;text-align:left;font-weight:600;font-size:.95rem;color:var(--ink);overflow-wrap:anywhere}
+.name .nm:hover{color:var(--brand);text-decoration:underline}
+.name b{font-weight:600;overflow-wrap:anywhere}
+.sku{display:block;font:500 .74rem var(--f-mono);color:var(--muted);margin-top:1px;overflow-wrap:anywhere}
+.num{grid-area:num;font:600 .8rem var(--f-mono);color:var(--muted);white-space:nowrap}
+.desc{grid-area:desc;overflow-wrap:anywhere;font-size:.9rem}
+.when{grid-area:when;font:500 .8rem var(--f-mono);color:var(--muted)}
+.money{grid-area:money;text-align:right}
+.money b{font:600 .98rem var(--f-mono);font-variant-numeric:tabular-nums}
+.pillc{grid-area:pill;justify-self:end}
+.act{grid-area:act;display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap}
+.srow{grid-template-columns:auto minmax(0,1fr);grid-template-areas:"num pill" "name name" "desc desc" "when money" "act act"}
+.nrow{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"when pill" "name name" "desc money"}
+.frow{grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"num name money" "act act act"}
+.crow{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"name act" "meta meta" "nums nums"}
+.meta{grid-area:meta;font-size:.84rem;color:var(--muted);overflow-wrap:anywhere}
+.nums{grid-area:nums;display:flex;gap:6px 18px;flex-wrap:wrap;font-size:.84rem}
+.nums span b{font:600 .88rem var(--f-mono);font-variant-numeric:tabular-nums}
+.nums small{color:var(--muted);margin-right:4px}
+.arow{grid-template-columns:minmax(0,1fr) auto auto;grid-template-areas:"name money act"}
+.empty{padding:22px 8px;text-align:center;color:var(--muted);display:flex;flex-direction:column;gap:10px;align-items:center}
+
+/* Segmented control */
+.seg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--field);margin-bottom:10px}
+.seg label{position:relative;cursor:pointer;display:block}
+.seg input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.seg span{display:flex;align-items:center;justify-content:center;min-height:44px;font-weight:600;font-size:.92rem;color:var(--muted)}
+.seg input:checked+span{background:var(--brand);color:var(--on-brand)}
+.seg input:focus-visible+span{outline:3px solid var(--ink);outline-offset:-4px}
+
+/* Forms */
+.form{display:flex;flex-direction:column;gap:14px}
+.fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.span2{grid-column:1/-1}
+.infobox{background:var(--field);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:.9rem;min-height:44px}
+.infobox b{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.infobox .bad{color:var(--bad)}
+.infobox .good{color:var(--ok)}
+fieldset.costs{border:1px solid var(--line);border-radius:10px;padding:6px 12px 12px;margin:0;min-width:0;display:flex;flex-direction:column;gap:8px}
+fieldset.costs legend{font:500 .72rem var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:0 6px}
+.cline{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:8px;padding:10px 0;border-top:1px solid var(--line)}
+.cline:first-child{border-top:0}
+.cline .c-pid{grid-column:1/-1}
+.cline .c-foot{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+
+/* Chart */
+#chartBox{width:100%;min-width:0}
+#chartBox svg{display:block;width:100%;height:auto}
+.legend{display:flex;gap:6px 16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.ch-grid{stroke:var(--line);stroke-width:1;fill:none}
+.ch-txt{fill:var(--muted);font:500 10px var(--f-mono)}
+.ch-in{fill:var(--c-in)}
+.ch-out{fill:var(--c-out)}
+
+/* Agenda */
+.week{display:flex;flex-direction:column;gap:10px}
+.day{border:1px solid var(--line);border-radius:10px;min-width:0;display:flex;flex-direction:column;background:var(--surface)}
+.day-h{display:flex;justify-content:space-between;gap:6px;padding:8px 10px;font:600 .8rem var(--f-mono);background:var(--field);border-bottom:1px solid var(--line);border-radius:10px 10px 0 0}
+.day.today .day-h{background:var(--brand);color:var(--on-brand);border-bottom-color:var(--brand)}
+.day-b{display:flex;flex-direction:column;gap:6px;padding:8px;min-height:44px}
+.chip{display:flex;flex-direction:column;gap:4px;align-items:stretch;text-align:left;width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);min-width:0}
+.chip:hover{border-color:var(--brand)}
+.chip-t{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap}
+.chip-t b{font:600 .82rem var(--f-mono)}
+.chip-c{font-weight:600;font-size:.88rem;overflow-wrap:anywhere}
+.chip-d,.chip-p{font-size:.78rem;color:var(--muted);overflow-wrap:anywhere}
+.free{color:var(--muted);font-size:.8rem;padding:2px}
+
+/* Modal + toast */
+.modal{position:fixed;inset:0;background:rgba(10,6,16,.6);display:flex;align-items:flex-end;justify-content:center;z-index:50}
+.sheet{background:var(--surface);color:var(--ink);width:100%;max-width:600px;max-height:94%;overflow:auto;border-radius:14px 14px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px))}
+.sheet h2{font-size:1.1rem;margin-bottom:12px}
+.sheet-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:space-between;align-items:center;margin-top:4px}
+.sheet-actions .grp{display:flex;gap:8px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(78px + env(safe-area-inset-bottom,0px));width:max-content;max-width:min(92vw,440px);background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:10px;font-size:.88rem;z-index:60}
+body.ro .w{display:none!important}
+body.no-dl .needs-dl{display:none!important}
+
+@media (min-width:700px){
+  .stats{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .stat-v{font-size:1.45rem}
+  .modal{align-items:center;padding:20px}
+  .sheet{border-radius:14px}
+}
+@media (min-width:820px){
+  body{padding-bottom:24px}
+  .tabs{position:static;max-width:1080px;margin:0 auto;display:flex;gap:6px;background:none;border:0;padding:12px 16px 0}
+  .tab{flex-direction:row;min-height:42px;padding:0 16px;gap:8px;font-size:.9rem}
+  .toast{bottom:24px}
+  .grid2{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+  .grid2.even{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;align-items:start}
+  .thead{display:grid;gap:6px 12px;font:500 .68rem var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:6px 2px;border-bottom:1px solid var(--line)}
+  .thead.srow,.thead.crow{grid-template-areas:none}
+  .srow{grid-template-columns:70px minmax(0,1.4fr) minmax(0,1.8fr) 112px 124px 108px auto;grid-template-areas:"num name desc when money pill act"}
+  .srow .pillc,.crow .pillc{justify-self:start}
+  .srow .money,.thead.srow span:nth-child(5){text-align:right}
+  .nrow{grid-template-columns:104px minmax(0,1.2fr) minmax(0,1.6fr) 120px 108px;grid-template-areas:"when name desc money pill"}
+  .nrow .pillc{justify-self:start}
+  .frow{grid-template-columns:70px minmax(0,1fr) 120px auto;grid-template-areas:"num name money act"}
+  .crow{grid-template-columns:minmax(0,1.8fr) minmax(0,1.6fr) minmax(0,2fr) auto;grid-template-areas:"name meta nums act"}
+  .nums{flex-wrap:nowrap;justify-content:space-between}
+}
+@media (prefers-reduced-motion:no-preference){
+  .btn,.tab{transition:background-color .15s,border-color .15s,color .15s}
+}
+</style>
+
+<header class="mast">
+  <div class="mast-in">
+    <div class="plate" role="img" aria-label="Gevisa Carga e Descarga e Serviços Gerais">
+      <span class="plate-name">GEVISA</span>
+      <span class="plate-rule"></span>
+      <span class="plate-sub">Carga &amp; Descarga<br>e Serviços Gerais</span>
+    </div>
+    <div class="mast-meta">
+      <button class="btn gold sm w" data-action="new-order">+ Novo serviço</button>
+      <span id="sync" class="sync wait"><i></i><span id="syncTxt">Conectando…</span></span>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Seções do app">
+  <button class="tab" data-go="painel" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="8" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="5" rx="1.5"/><rect x="13.5" y="11.5" width="7" height="9" rx="1.5"/><rect x="3.5" y="14.5" width="7" height="6" rx="1.5"/></svg><span>Painel</span></button>
+  <button class="tab" data-go="servicos"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4.5" width="14" height="16" rx="2"/><path d="M9 4.5h6V7H9zM8.5 12h7M8.5 16h5"/></svg><span>Serviços</span></button>
+  <button class="tab" data-go="agenda"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>Agenda</span></button>
+  <button class="tab" data-go="financeiro"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.2c-.5-.8-1.5-1.2-2.6-1.2-1.5 0-2.6.8-2.6 2 0 3 5.4 1.4 5.4 4.2 0 1.2-1.1 2-2.7 2-1.2 0-2.2-.5-2.8-1.4M12 6.5V8M12 16v1.5"/></svg><span>Financeiro</span></button>
+  <button class="tab" data-go="cadastros"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3.2"/><path d="M3.5 19.5c.4-3.2 2.6-5 5.5-5s5.1 1.8 5.5 5"/><circle cx="17" cy="9.5" r="2.5"/><path d="M16 14.7c2.4 0 4.1 1.4 4.5 4"/></svg><span>Cadastros</span></button>
+</nav>
+
+<main class="wrap">
+
+<!-- PAINEL -->
+<section class="view" data-view="painel">
+  <div id="localBanner" class="notice info" hidden><p><strong>Modo local.</strong> Os dados ficam só neste navegador. Para a equipe usar os mesmos serviços, abra este app logado no Claude, com permissão de edição.</p></div>
+  <div id="exampleBanner" class="notice w" hidden>
+    <p><strong>Dados de exemplo.</strong> Os clientes, prestadores e serviços abaixo são fictícios, só para você conhecer o app. Apague quando for lançar os serviços reais.</p>
+    <button class="btn sm" data-action="clear-examples">Apagar exemplos</button>
+  </div>
+  <div class="monthbar"><button class="btn sm" data-action="month-prev" aria-label="Mês anterior">&lsaquo;</button><strong class="mlabel"></strong><button class="btn sm" data-action="month-next" aria-label="Próximo mês">&rsaquo;</button><button class="btn sm ghost" data-action="month-now">Mês atual</button></div>
+  <div class="stats" id="stats"></div>
+  <div class="grid2">
+    <section class="panel">
+      <div class="phead"><div><h2>Próximos serviços</h2><p class="sub">Agendados e em execução, a partir de hoje</p></div><button class="btn sm ghost" data-go="agenda">Ver agenda</button></div>
+      <div class="list" id="nextList"></div>
+    </section>
+    <section class="panel">
+      <h2>Receita e custo por mês</h2>
+      <p class="sub">Últimos 6 meses, em reais. Orçamentos e cancelados ficam de fora.</p>
+      <div id="chartBox"></div>
+      <div class="legend"><span><i style="background:var(--c-in)"></i>Receita</span><span><i style="background:var(--c-out)"></i>Custo</span></div>
+      <p class="sub" id="chartSum" style="margin-top:6px"></p>
+    </section>
+  </div>
+  <section class="panel">
+    <h2>Precisa de atenção</h2>
+    <div class="list" id="attnList"></div>
+  </section>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="view" data-view="servicos" hidden>
+  <section class="panel">
+    <div class="phead">
+      <div><h2>Serviços</h2><p class="sub" id="sCount"></p></div>
+      <div class="act"><button class="btn sm needs-dl" data-action="export-orders">Exportar CSV</button><button class="btn sm primary w" data-action="new-order">Novo serviço</button></div>
+    </div>
+    <div class="toolbar">
+      <input class="grow" type="search" id="s-q" placeholder="Buscar por cliente, serviço, local ou número" aria-label="Buscar serviço" autocomplete="off">
+      <select id="s-st" aria-label="Filtrar por situação"></select>
+      <select id="s-per" aria-label="Filtrar por período">
+        <option value="mes">Mês selecionado</option>
+        <option value="semana">Próximos 7 dias</option>
+        <option value="todos">Todo o período</option>
+      </select>
+    </div>
+    <div class="thead srow" aria-hidden="true"><span>Nº</span><span>Cliente</span><span>Serviço</span><span>Data</span><span>Valor</span><span>Situação</span><span></span></div>
+    <div class="list" id="sList"></div>
+    <div class="empty" id="sMore" hidden><button class="btn" data-action="more-orders">Mostrar mais serviços</button></div>
+  </section>
+</section>
+
+<!-- AGENDA -->
+<section class="view" data-view="agenda" hidden>
+  <section class="panel">
+    <div class="phead">
+      <div><h2>Agenda da semana</h2><p class="sub" id="weekLabel"></p></div>
+      <div class="act"><button class="btn sm" data-action="week-prev">&lsaquo; Anterior</button><button class="btn sm" data-action="week-now">Hoje</button><button class="btn sm" data-action="week-next">Próxima &rsaquo;</button></div>
+    </div>
+    <div class="week" id="week"></div>
+  </section>
+</section>
+
+<!-- FINANCEIRO -->
+<section class="view" data-view="financeiro" hidden>
+  <div class="monthbar"><button class="btn sm" data-action="month-prev" aria-label="Mês anterior">&lsaquo;</button><strong class="mlabel"></strong><button class="btn sm" data-action="month-next" aria-label="Próximo mês">&rsaquo;</button><button class="btn sm ghost" data-action="month-now">Mês atual</button></div>
+  <div class="stats" id="fstats"></div>
+  <div class="grid2 even">
+    <section class="panel">
+      <h2>A receber</h2>
+      <p class="sub" id="recvSub"></p>
+      <div class="list" id="recvList"></div>
+    </section>
+    <section class="panel">
+      <h2>A pagar aos prestadores</h2>
+      <p class="sub" id="paySub"></p>
+      <div class="list" id="payList"></div>
+    </section>
+  </div>
+</section>
+
+<!-- CADASTROS -->
+<section class="view" data-view="cadastros" hidden>
+  <section class="panel">
+    <div class="phead">
+      <div><h2>Cadastros</h2><p class="sub" id="cCount"></p></div>
+      <button class="btn sm primary w" data-action="new-reg" id="newReg">Novo cliente</button>
+    </div>
+    <div class="seg" role="radiogroup" aria-label="Tipo de cadastro">
+      <label><input type="radio" name="cadtab" value="clients" checked><span>Clientes</span></label>
+      <label><input type="radio" name="cadtab" value="providers"><span>Prestadores</span></label>
+    </div>
+    <div class="toolbar"><input class="grow" type="search" id="c-q" placeholder="Buscar por nome, placa ou telefone" aria-label="Buscar cadastro" autocomplete="off"></div>
+    <div class="thead crow" id="cHead" aria-hidden="true"></div>
+    <div class="list" id="cList"></div>
+  </section>
+</section>
+
+</main>
+<p class="foot">Gevisa Carga e Descarga e Serviços Gerais Ltda</p>
+
+<!-- Modal: serviço -->
+<div class="modal" id="om" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="om-title">
+    <h2 id="om-title">Novo serviço</h2>
+    <form class="form" id="oForm" autocomplete="off" novalidate>
+      <input type="hidden" id="o-id">
+      <div class="fgrid">
+        <div class="field span2"><label for="o-client">Cliente</label><select id="o-client"></select></div>
+        <div class="field"><label for="o-type">Tipo de serviço</label>
+          <select id="o-type"><option value="descarga">Descarga</option><option value="carga">Carga</option><option value="frete">Frete</option><option value="mudanca">Mudança</option><option value="diaria">Diária de ajudantes</option><option value="gerais">Serviços gerais</option><option value="outro">Outro</option></select></div>
+        <div class="field"><label for="o-status">Situação</label>
+          <select id="o-status"><option value="orcamento">Orçamento</option><option value="agendado">Agendado</option><option value="execucao">Em execução</option><option value="concluido">Concluído</option><option value="faturado">Faturado</option><option value="pago">Recebido</option><option value="cancelado">Cancelado</option></select></div>
+        <div class="field span2"><label for="o-title">Descrição do serviço</label><input type="text" id="o-title" maxlength="120" placeholder="Ex.: Descarga de contêiner 40 pés"></div>
+        <div class="field"><label for="o-date">Data</label><input type="date" id="o-date"></div>
+        <div class="field"><label for="o-time">Horário</label><input type="time" id="o-time" value="08:00"></div>
+        <div class="field"><label for="o-hours">Duração (horas)</label><input type="text" id="o-hours" inputmode="decimal" placeholder="4"></div>
+        <div class="field"><label for="o-price">Valor cobrado (R$)</label><input type="text" id="o-price" inputmode="decimal" placeholder="0,00"></div>
+        <div class="field"><label for="o-from">Origem ou local</label><input type="text" id="o-from" maxlength="120" placeholder="Onde será feito"></div>
+        <div class="field"><label for="o-to">Destino</label><input type="text" id="o-to" maxlength="120" placeholder="Opcional"></div>
+      </div>
+      <fieldset class="costs">
+        <legend>Quem executa e quanto custa</legend>
+        <div id="o-costs"></div>
+        <div><button type="button" class="btn sm" data-action="add-cost">+ Adicionar prestador ou custo</button></div>
+      </fieldset>
+      <div class="field"><label for="o-notes">Observações</label><textarea id="o-notes" maxlength="500" placeholder="Contato no local, restrições de horário, detalhes da carga"></textarea></div>
+      <div class="infobox" id="o-sum" aria-live="polite"></div>
+      <p class="warnbox" id="o-warn" hidden></p>
+      <p class="err" id="o-err" role="alert"></p>
+      <div class="field" id="o-share-wrap" hidden><label for="o-share">Resumo (selecione e copie)</label><textarea id="o-share" readonly></textarea></div>
+      <div class="sheet-actions">
+        <div class="grp"><button type="button" class="btn sm w" id="o-del" data-action="del-order">Excluir</button><button type="button" class="btn sm" id="o-copy" data-action="copy-order">Copiar resumo</button></div>
+        <div class="grp"><button type="button" class="btn" data-action="close-modal">Fechar</button><button type="submit" class="btn primary w" id="o-save">Salvar</button></div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: cliente -->
+<div class="modal" id="cm" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="cm-title">
+    <h2 id="cm-title">Novo cliente</h2>
+    <form class="form" id="cForm" autocomplete="off" novalidate>
+      <input type="hidden" id="cf-id">
+      <div class="field"><label for="cf-name">Nome ou razão social</label><input type="text" id="cf-name" maxlength="100"></div>
+      <div class="fgrid">
+        <div class="field"><label for="cf-contact">Pessoa de contato</label><input type="text" id="cf-contact" maxlength="80"></div>
+        <div class="field"><label for="cf-phone">Telefone</label><input type="text" id="cf-phone" maxlength="30" inputmode="tel"></div>
+        <div class="field span2"><label for="cf-notes">Observações</label><textarea id="cf-notes" maxlength="400" placeholder="Endereço, horários de recebimento, condições de pagamento"></textarea></div>
+      </div>
+      <p class="err" id="cf-err" role="alert"></p>
+      <div class="sheet-actions">
+        <div><button type="button" class="btn sm w" id="cf-del" data-action="del-client">Excluir cliente</button></div>
+        <div class="grp"><button type="button" class="btn" data-action="close-modal">Cancelar</button><button type="submit" class="btn primary w">Salvar</button></div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: prestador -->
+<div class="modal" id="vm" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="vm-title">
+    <h2 id="vm-title">Novo prestador</h2>
+    <form class="form" id="vForm" autocomplete="off" novalidate>
+      <input type="hidden" id="vf-id">
+      <div class="fgrid">
+        <div class="field span2"><label for="vf-kind">Tipo</label>
+          <select id="vf-kind"><option value="caminhao">Caminhão e motorista</option><option value="ajudante">Ajudantes</option><option value="empilhadeira">Empilhadeira e operador</option><option value="outro">Outro</option></select></div>
+        <div class="field span2"><label for="vf-name">Nome do motorista, equipe ou empresa</label><input type="text" id="vf-name" maxlength="100"></div>
+        <div class="field"><label for="vf-vehicle">Veículo ou equipamento</label><input type="text" id="vf-vehicle" maxlength="60" placeholder="Ex.: Truck baú 14 t"></div>
+        <div class="field"><label for="vf-plate">Placa</label><input type="text" id="vf-plate" maxlength="10" placeholder="Opcional"></div>
+        <div class="field"><label for="vf-phone">Telefone</label><input type="text" id="vf-phone" maxlength="30" inputmode="tel"></div>
+        <div class="field"><label for="vf-price">Valor combinado padrão (R$)</label><input type="text" id="vf-price" inputmode="decimal" placeholder="0,00"></div>
+        <div class="field span2"><label for="vf-notes">Observações</label><textarea id="vf-notes" maxlength="400" placeholder="Carga máxima, região de atuação, chave Pix"></textarea></div>
+      </div>
+      <p class="err" id="vf-err" role="alert"></p>
+      <div class="sheet-actions">
+        <div><button type="button" class="btn sm w" id="vf-del" data-action="del-provider">Excluir prestador</button></div>
+        <div class="grp"><button type="button" class="btn" data-action="close-modal">Cancelar</button><button type="submit" class="btn primary w">Salvar</button></div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+(() => {
+'use strict';
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const norm = s => String(s ?? '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+const coll = (a, b) => String(a).localeCompare(String(b), 'pt-BR');
+const nf = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 });
+const money = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+const r2 = n => Math.round(n * 100) / 100;
+const num = v => { const raw = String(v ?? '').trim(); if (raw === '') return null; const t = raw.includes(',') ? raw.replace(/\./g, '').replace(',', '.') : raw; const n = Number(t); return Number.isFinite(n) ? n : null; };
+const fmtIn = n => (n ? String(n).replace('.', ',') : '');
+const pad = n => String(n).padStart(2, '0');
+const ymd = d => d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+const parseYmd = s => { const [y, m, d] = String(s).split('-').map(Number); return new Date(y, (m || 1) - 1, d || 1); };
+const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+const mondayOf = d => { const x = new Date(d); x.setHours(0, 0, 0, 0); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return x; };
+const todayStr = () => ymd(new Date());
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
+const wdf = new Intl.DateTimeFormat('pt-BR', { weekday: 'short' });
+const mf = new Intl.DateTimeFormat('pt-BR', { month: 'long', year: 'numeric' });
+const msf = new Intl.DateTimeFormat('pt-BR', { month: 'short' });
+const dayLabel = s => { const d = parseYmd(s); return cap(wdf.format(d).replace('.', '')) + ' ' + pad(d.getDate()) + '/' + pad(d.getMonth() + 1); };
+const relLabel = s => s === todayStr() ? 'Hoje' : s === ymd(addDays(new Date(), 1)) ? 'Amanhã' : dayLabel(s);
+
+const TYPES = { descarga: 'Descarga', carga: 'Carga', frete: 'Frete', mudanca: 'Mudança', diaria: 'Diária de ajudantes', gerais: 'Serviços gerais', outro: 'Outro' };
+const KINDS = { caminhao: 'Caminhão e motorista', ajudante: 'Ajudantes', empilhadeira: 'Empilhadeira e operador', outro: 'Outro' };
+const STATUS = {
+  orcamento: { l: 'Orçamento', cls: 'adj', next: 'agendado', nl: 'Confirmar' },
+  agendado: { l: 'Agendado', cls: 'in', next: 'execucao', nl: 'Iniciar' },
+  execucao: { l: 'Em execução', cls: 'out', next: 'concluido', nl: 'Concluir' },
+  concluido: { l: 'Concluído', cls: 'low', next: 'faturado', nl: 'Faturar' },
+  faturado: { l: 'Faturado', cls: 'low', next: 'pago', nl: 'Receber' },
+  pago: { l: 'Recebido', cls: 'ok', next: null, nl: '' },
+  cancelado: { l: 'Cancelado', cls: 'zero', next: null, nl: '' }
+};
+const ACTIVE = new Set(['agendado', 'execucao', 'concluido', 'faturado', 'pago']);
+const DONE = new Set(['concluido', 'faturado', 'pago']);
+const BUSY = new Set(['agendado', 'execucao']);
+
+const state = {
+  clients: new Map(), providers: new Map(), orders: new Map(),
+  loaded: { clients: false, providers: false, orders: false }, canWrite: true, view: 'painel',
+  month: todayStr().slice(0, 7), weekStart: mondayOf(new Date()),
+  fS: { q: '', st: '', per: 'mes' }, sLimit: 80, fC: { q: '' }, cadTab: 'clients',
+  filteredOrders: [], costRows: []
+};
+const orders = () => [...state.orders.values()];
+const costOf = o => (o.costs || []).reduce((s, c) => s + (Number(c.amount) || 0), 0);
+const priceOf = o => Number(o.price) || 0;
+const profitOf = o => priceOf(o) - costOf(o);
+const osNum = o => 'OS ' + String(o.n || 0).padStart(4, '0');
+const clientName = o => { const c = state.clients.get(o.clientId); return c ? c.name : 'Cliente removido'; };
+const provName = pid => { const p = state.providers.get(pid); return p ? p.name : 'Prestador removido'; };
+const pillFor = st => { const s = STATUS[st] || STATUS.orcamento; return `<span class="pill ${s.cls}">${s.l}</span>`; };
+const whenText = o => relLabel(o.date) + (o.time ? ' ' + o.time : '');
+const pct = (a, b) => b > 0 ? Math.round(a / b * 100) + '%' : '—';
+
+/* ---------- Armazenamento: banco compartilhado (db) ou navegador (local) ---------- */
+const LS = 'gevisa-servicos-v1';
+const KINDLIST = ['clients', 'providers', 'orders'];
+const Store = {
+  db: null, dl: null, mode: 'wait',
+  async put(kind, id, obj) {
+    const { id: _i, ...data } = obj;
+    if (this.db) { await retry(() => this.db.collection(kind).doc(id).set(data)); }
+    else { state[kind].set(id, { id, ...data }); lsSave(); render(); }
+  },
+  async del(kind, id) {
+    if (this.db) { await retry(() => this.db.collection(kind).doc(id).delete()); }
+    else { state[kind].delete(id); lsSave(); render(); }
+  },
+  newId(kind) {
+    if (this.db) return this.db.collection(kind).doc().id;
+    return kind[0] + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+  }
+};
+async function retry(fn) {
+  try { return await fn(); }
+  catch (e) {
+    if (e && e.code === 'unavailable') { await new Promise(r => setTimeout(r, 400 + Math.random() * 600)); return await fn(); }
+    throw e;
+  }
+}
+function lsLoad() {
+  try {
+    const j = JSON.parse(localStorage.getItem(LS) || 'null'); if (!j) return;
+    for (const k of KINDLIST) for (const [id, v] of Object.entries(j[k] || {})) state[k].set(id, { id, ...v });
+  } catch (e) { /* sem armazenamento local */ }
+}
+function lsSave() {
+  try {
+    const o = {};
+    for (const k of KINDLIST) { o[k] = {}; for (const [id, v] of state[k]) { const { id: _i, ...r } = v; o[k][id] = r; } }
+    localStorage.setItem(LS, JSON.stringify(o));
+  } catch (e) { /* ignora */ }
+}
+function dbErr(e) {
+  const c = e && e.code;
+  if (c === 'quota_exceeded') return 'O limite de armazenamento foi atingido. Apague registros antigos para continuar.';
+  if (c === 'invalid_argument') return 'Não foi possível salvar. Confira se você tem permissão de edição neste app.';
+  if (c === 'resource_exhausted') return 'Muitas operações seguidas. Aguarde alguns segundos e tente de novo.';
+  if (c === 'revoked') return 'Seu acesso a este app mudou. Recarregue a página.';
+  return 'Não foi possível salvar agora. Tente de novo em instantes.';
+}
+
+/* ---------- Regras ---------- */
+const toMin = t => { const [h, m] = String(t || '08:00').split(':').map(Number); return (h || 0) * 60 + (m || 0); };
+const hoursOf = o => Number(o.hours) > 0 ? Number(o.hours) : 4;
+function conflictsFor(o) {
+  if (!BUSY.has(o.status)) return [];
+  const mine = new Set((o.costs || []).map(c => c.pid).filter(Boolean));
+  if (!mine.size) return [];
+  const a0 = toMin(o.time), a1 = a0 + hoursOf(o) * 60, res = [];
+  for (const x of state.orders.values()) {
+    if (x.id === o.id || x.date !== o.date || !BUSY.has(x.status)) continue;
+    const b0 = toMin(x.time), b1 = b0 + hoursOf(x) * 60;
+    if (!(a0 < b1 && b0 < a1)) continue;
+    const shared = [...new Set((x.costs || []).map(c => c.pid).filter(p => p && mine.has(p)))];
+    for (const pid of shared) res.push({ pid, other: x });
+  }
+  return res;
+}
+function unpaidLines() {
+  const out = [];
+  for (const o of orders()) {
+    if (!DONE.has(o.status)) continue;
+    (o.costs || []).forEach((c, i) => { if (!c.paid && Number(c.amount) > 0) out.push({ o, i, c }); });
+  }
+  return out.sort((a, b) => a.o.date < b.o.date ? -1 : a.o.date > b.o.date ? 1 : 0);
+}
+const monthOrders = key => orders().filter(o => ACTIVE.has(o.status) && String(o.date).startsWith(key));
+const sumBy = (arr, f) => arr.reduce((s, o) => s + f(o), 0);
+
+/* ---------- Interface ---------- */
+let raf = 0;
+function render() { cancelAnimationFrame(raf); raf = requestAnimationFrame(doRender); }
+function doRender() {
+  const ready = state.loaded.clients && state.loaded.providers && state.loaded.orders;
+  const ex = [...state.clients.values(), ...state.providers.values(), ...state.orders.values()].some(x => x.example);
+  $('#exampleBanner').hidden = !(ex && ready);
+  $('#localBanner').hidden = Store.mode !== 'local';
+  const [y, m] = state.month.split('-').map(Number);
+  $$('.mlabel').forEach(el => { el.textContent = cap(mf.format(new Date(y, m - 1, 1))); });
+  const v = state.view;
+  if (v === 'painel') renderPainel(ready);
+  if (v === 'servicos') renderServicos(ready);
+  if (v === 'agenda') renderAgenda(ready);
+  if (v === 'financeiro') renderFin(ready);
+  if (v === 'cadastros') renderCad(ready);
+}
+const stat = (l, v, s = '', cls = '') => `<div class="stat ${cls}"><span class="stat-l">${l}</span><span class="stat-v">${esc(v)}</span>${s ? `<span class="stat-s">${esc(s)}</span>` : ''}</div>`;
+const loading = t => `<div class="empty">${t}</div>`;
+
+function renderPainel(ready) {
+  const mo = monthOrders(state.month), done = mo.filter(o => DONE.has(o.status));
+  const rev = sumBy(mo, priceOf), profit = sumBy(done, profitOf), doneRev = sumBy(done, priceOf);
+  const recv = orders().filter(o => o.status === 'concluido' || o.status === 'faturado');
+  const pay = unpaidLines();
+  $('#stats').innerHTML =
+    stat('Receita do mês', money.format(rev), `${mo.length} serviços`) +
+    stat('A receber', money.format(sumBy(recv, priceOf)), `${recv.length} serviços`, recv.length ? 'warn' : '') +
+    stat('A pagar', money.format(pay.reduce((s, x) => s + Number(x.c.amount), 0)), `${pay.length} lançamentos`, pay.length ? 'warn' : '') +
+    stat('Lucro do mês', money.format(profit), done.length ? `margem ${pct(profit, doneRev)} nos concluídos` : 'nenhum serviço concluído', profit > 0 ? 'good' : '');
+
+  const t = todayStr();
+  const next = orders().filter(o => BUSY.has(o.status) && o.date >= t).sort((a, b) => (a.date + (a.time || '')) < (b.date + (b.time || '')) ? -1 : 1).slice(0, 6);
+  $('#nextList').innerHTML = !ready ? loading('Carregando serviços…') : next.length ? next.map(o => `<div class="row nrow">
+      <div class="when">${esc(whenText(o))}</div>
+      <div class="pillc">${pillFor(o.status)}</div>
+      <div class="name"><button class="nm" data-action="edit-order" data-id="${esc(o.id)}">${esc(clientName(o))}</button></div>
+      <div class="desc">${esc(TYPES[o.type] || '')} · ${esc(o.title)}</div>
+      <div class="money"><b>${esc(money.format(priceOf(o)))}</b></div>
+    </div>`).join('') : '<div class="empty"><p>Nenhum serviço agendado a partir de hoje.</p><button class="btn primary w" data-action="new-order">Agendar um serviço</button></div>';
+
+  const items = [];
+  const toBill = orders().filter(o => o.status === 'concluido'), toRecv = orders().filter(o => o.status === 'faturado');
+  const confl = orders().filter(o => conflictsFor(o).length), quotes = orders().filter(o => o.status === 'orcamento' && o.date >= t);
+  if (toBill.length) items.push(['bill', `${toBill.length} serviço(s) concluído(s) ainda sem faturar`, money.format(sumBy(toBill, priceOf))]);
+  if (toRecv.length) items.push(['fin', `${toRecv.length} serviço(s) faturado(s) aguardando pagamento do cliente`, money.format(sumBy(toRecv, priceOf))]);
+  if (pay.length) items.push(['fin', `${pay.length} pagamento(s) a prestadores em aberto`, money.format(pay.reduce((s, x) => s + Number(x.c.amount), 0))]);
+  if (confl.length) items.push(['agenda', `${confl.length} serviço(s) com conflito de equipe ou caminhão na agenda`, '']);
+  if (quotes.length) items.push(['quote', `${quotes.length} orçamento(s) aguardando resposta do cliente`, money.format(sumBy(quotes, priceOf))]);
+  $('#attnList').innerHTML = !ready ? loading('Carregando…') : items.length ? items.map(([k, txt, val]) => `<div class="row arow">
+      <div class="name"><b>${esc(txt)}</b></div><div class="money"><b>${esc(val)}</b></div>
+      <div class="act"><button class="btn sm" data-action="attn" data-k="${k}">Ver</button></div></div>`).join('') : '<div class="empty">Tudo em dia. Nada pendente agora.</div>';
+  renderChart();
+}
+
+function niceMoney(max) {
+  const steps = [250, 500, 1000, 2000, 2500, 5000, 10000, 20000, 25000, 50000, 100000, 200000, 250000, 500000, 1000000, 2000000];
+  const step = steps.find(s => s * 4 >= max) || 5000000;
+  return { top: step * 4, step };
+}
+function renderChart() {
+  const box = $('#chartBox');
+  const W = Math.max(280, Math.floor(box.clientWidth || 320)), H = 188;
+  const mg = { l: 46, r: 4, t: 8, b: 24 };
+  const [y, m] = state.month.split('-').map(Number);
+  const months = [];
+  for (let i = 5; i >= 0; i--) { const d = new Date(y, m - 1 - i, 1); months.push({ key: d.getFullYear() + '-' + pad(d.getMonth() + 1), d, rev: 0, cost: 0 }); }
+  const idx = new Map(months.map((x, i) => [x.key, i]));
+  for (const o of orders()) { if (!ACTIVE.has(o.status)) continue; const i = idx.get(String(o.date).slice(0, 7)); if (i == null) continue; months[i].rev += priceOf(o); months[i].cost += costOf(o); }
+  const { top, step } = niceMoney(Math.max(1, ...months.map(x => Math.max(x.rev, x.cost))));
+  const pw = W - mg.l - mg.r, ph = H - mg.t - mg.b, band = pw / 6, bw = Math.min(30, band * 0.3);
+  const yy = v => mg.t + ph - v / top * ph;
+  const lab = v => v === 0 ? '0' : v >= 1000 ? nf.format(v / 1000) + ' mil' : String(v);
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Receita e custo por mês nos últimos 6 meses">`;
+  for (let t = 0; t <= 4; t++) { const v = t * step, y0 = yy(v); s += `<line class="ch-grid" x1="${mg.l}" x2="${W - mg.r}" y1="${y0}" y2="${y0}"/><text class="ch-txt" x="${mg.l - 6}" y="${y0 + 3.5}" text-anchor="end">${lab(v)}</text>`; }
+  months.forEach((mo, i) => {
+    const x0 = mg.l + i * band + band / 2;
+    const name = msf.format(mo.d).replace('.', '');
+    s += `<g><title>${cap(name)} ${mo.d.getFullYear()}: receita ${money.format(mo.rev)}, custo ${money.format(mo.cost)}, lucro ${money.format(mo.rev - mo.cost)}</title>`;
+    if (mo.rev) s += `<rect class="ch-in" x="${(x0 - bw - 1).toFixed(1)}" y="${yy(mo.rev).toFixed(1)}" width="${bw.toFixed(1)}" height="${(mg.t + ph - yy(mo.rev)).toFixed(1)}" rx="2"/>`;
+    if (mo.cost) s += `<rect class="ch-out" x="${(x0 + 1).toFixed(1)}" y="${yy(mo.cost).toFixed(1)}" width="${bw.toFixed(1)}" height="${(mg.t + ph - yy(mo.cost)).toFixed(1)}" rx="2"/>`;
+    s += `<rect x="${(x0 - band / 2).toFixed(1)}" y="${mg.t}" width="${band.toFixed(1)}" height="${ph}" fill="transparent"/></g>`;
+    s += `<text class="ch-txt" x="${x0.toFixed(1)}" y="${H - 7}" text-anchor="middle">${esc(name)}</text>`;
+  });
+  box.innerHTML = s + '</svg>';
+  const cur = months[5];
+  $('#chartSum').textContent = `${cap(mf.format(cur.d))}: receita ${money.format(cur.rev)}, custo ${money.format(cur.cost)}, lucro ${money.format(cur.rev - cur.cost)}.`;
+}
+
+/* Serviços */
+function fillStatusFilter() {
+  const sel = $('#s-st'); if (sel._ok) return; sel._ok = true;
+  sel.innerHTML = '<option value="">Todas as situações</option><option value="abertos">Em aberto (não recebidos)</option>' + Object.entries(STATUS).map(([k, v]) => `<option value="${k}">${v.l}</option>`).join('');
+}
+function filterOrders() {
+  const f = state.fS, q = norm(f.q), t = todayStr(), end = ymd(addDays(new Date(), 7));
+  const list = orders().filter(o => {
+    if (f.per === 'mes' && !String(o.date).startsWith(state.month)) return false;
+    if (f.per === 'semana' && !(o.date >= t && o.date <= end)) return false;
+    if (f.st === 'abertos') { if (o.status === 'pago' || o.status === 'cancelado') return false; }
+    else if (f.st && o.status !== f.st) return false;
+    if (q && !norm([osNum(o), clientName(o), o.title, o.from, o.to, TYPES[o.type]].join(' ')).includes(q)) return false;
+    return true;
+  });
+  const key = o => o.date + (o.time || '');
+  return list.sort((a, b) => f.per === 'todos' ? (key(a) < key(b) ? 1 : -1) : (key(a) < key(b) ? -1 : 1));
+}
+function renderServicos(ready) {
+  fillStatusFilter();
+  const list = filterOrders(); state.filteredOrders = list;
+  $('#sCount').textContent = ready ? `${list.length} serviços · ${money.format(sumBy(list.filter(o => o.status !== 'cancelado'), priceOf))} em valor cobrado` : '';
+  if (!ready) { $('#sList').innerHTML = loading('Carregando serviços…'); $('#sMore').hidden = true; return; }
+  if (!state.orders.size) { $('#sList').innerHTML = '<div class="empty"><p>Nenhum serviço lançado ainda.</p><button class="btn primary w" data-action="new-order">Lançar o primeiro serviço</button></div>'; $('#sMore').hidden = true; return; }
+  const shown = list.slice(0, state.sLimit);
+  $('#sList').innerHTML = shown.length ? shown.map(o => {
+    const st = STATUS[o.status] || STATUS.orcamento, profit = profitOf(o);
+    return `<div class="row srow">
+      <div class="num">${esc(osNum(o))}</div>
+      <div class="name"><button class="nm" data-action="edit-order" data-id="${esc(o.id)}">${esc(clientName(o))}</button><span class="sku">${esc(TYPES[o.type] || '')}</span></div>
+      <div class="desc">${esc(o.title)}<span class="sku">${esc([o.from, o.to].filter(Boolean).join(' → '))}</span></div>
+      <div class="when">${esc(whenText(o))}</div>
+      <div class="money"><b>${esc(money.format(priceOf(o)))}</b><span class="sku">${o.status === 'cancelado' ? 'cancelado' : 'lucro ' + esc(money.format(profit))}</span></div>
+      <div class="pillc">${pillFor(o.status)}</div>
+      <div class="act">${st.next ? `<button class="btn sm w" data-action="advance" data-id="${esc(o.id)}">${esc(st.nl)}</button>` : ''}</div>
+    </div>`;
+  }).join('') : '<div class="empty">Nenhum serviço encontrado com esses filtros.</div>';
+  $('#sMore').hidden = list.length <= state.sLimit;
+}
+async function advance(id) {
+  const o = state.orders.get(id); if (!o) return;
+  const nx = (STATUS[o.status] || {}).next; if (!nx) return;
+  try { await Store.put('orders', id, { ...o, status: nx }); toast(`${osNum(o)}: ${STATUS[nx].l}`); } catch (e) { toast(dbErr(e)); }
+}
+
+/* Agenda */
+function renderAgenda(ready) {
+  const d0 = state.weekStart, d6 = addDays(d0, 6);
+  $('#weekLabel').textContent = `${pad(d0.getDate())}/${pad(d0.getMonth() + 1)} a ${pad(d6.getDate())}/${pad(d6.getMonth() + 1)}/${d6.getFullYear()}`;
+  if (!ready) { $('#week').innerHTML = loading('Carregando agenda…'); return; }
+  const t = todayStr(), all = orders().filter(o => o.status !== 'cancelado');
+  $('#week').innerHTML = Array.from({ length: 7 }, (_, i) => {
+    const d = addDays(d0, i), key = ymd(d);
+    const items = all.filter(o => o.date === key).sort((a, b) => toMin(a.time) - toMin(b.time));
+    return `<div class="day ${key === t ? 'today' : ''}"><div class="day-h"><span>${esc(dayLabel(key))}</span><span>${items.length ? items.length + (items.length > 1 ? ' serviços' : ' serviço') : ''}</span></div><div class="day-b">${items.length ? items.map(o => {
+      const names = [...new Set((o.costs || []).map(c => c.pid).filter(Boolean))].map(provName).join(', ');
+      const cf = conflictsFor(o).length;
+      return `<button class="chip" data-action="edit-order" data-id="${esc(o.id)}">
+        <span class="chip-t"><b>${esc(o.time || '')}</b>${pillFor(o.status)}</span>
+        <span class="chip-c">${esc(clientName(o))}</span>
+        <span class="chip-d">${esc(TYPES[o.type] || '')} · ${esc(o.title)}</span>
+        ${names ? `<span class="chip-p">${esc(names)}</span>` : ''}
+        ${cf ? '<span class="pill zero" style="align-self:flex-start">Conflito de agenda</span>' : ''}</button>`;
+    }).join('') : '<span class="free">Livre</span>'}</div></div>`;
+  }).join('');
+}
+
+/* Financeiro */
+function renderFin(ready) {
+  const mo = monthOrders(state.month), rev = sumBy(mo, priceOf), cost = sumBy(mo, costOf), profit = rev - cost;
+  $('#fstats').innerHTML = stat('Receita', money.format(rev), `${mo.length} serviços no mês`) + stat('Custos', money.format(cost), 'prestadores e outros') + stat('Lucro', money.format(profit), '', profit > 0 ? 'good' : profit < 0 ? 'bad' : '') + stat('Margem', pct(profit, rev), 'lucro sobre a receita');
+  const recv = orders().filter(o => o.status === 'concluido' || o.status === 'faturado').sort((a, b) => a.date < b.date ? -1 : 1);
+  $('#recvSub').textContent = ready ? `${recv.length} serviços · ${money.format(sumBy(recv, priceOf))} no total` : '';
+  $('#recvList').innerHTML = !ready ? loading('Carregando…') : recv.length ? recv.map(o => {
+    const st = STATUS[o.status];
+    return `<div class="row frow">
+      <div class="num">${esc(osNum(o))}</div>
+      <div class="name"><button class="nm" data-action="edit-order" data-id="${esc(o.id)}">${esc(clientName(o))}</button><span class="sku">${esc(dayLabel(o.date))} · ${esc(o.title)}</span><span class="sku">${pillFor(o.status)}</span></div>
+      <div class="money"><b>${esc(money.format(priceOf(o)))}</b></div>
+      <div class="act"><button class="btn sm w" data-action="advance" data-id="${esc(o.id)}">${esc(st.nl)}</button></div>
+    </div>`;
+  }).join('') : '<div class="empty">Nenhum valor pendente de clientes.</div>';
+  const pay = unpaidLines();
+  $('#paySub').textContent = ready ? `${pay.length} lançamentos · ${money.format(pay.reduce((s, x) => s + Number(x.c.amount), 0))} no total` : '';
+  $('#payList').innerHTML = !ready ? loading('Carregando…') : pay.length ? pay.map(({ o, i, c }) => `<div class="row frow">
+      <div class="num">${esc(osNum(o))}</div>
+      <div class="name"><b>${esc(c.pid ? provName(c.pid) : (c.desc || 'Custo avulso'))}</b><span class="sku">${esc([c.pid ? c.desc : '', clientName(o), dayLabel(o.date)].filter(Boolean).join(' · '))}</span></div>
+      <div class="money"><b>${esc(money.format(Number(c.amount)))}</b></div>
+      <div class="act"><button class="btn sm w" data-action="pay-line" data-id="${esc(o.id)}" data-i="${i}">Marcar pago</button></div>
+    </div>`).join('') : '<div class="empty">Nenhum pagamento pendente a prestadores.</div>';
+}
+async function payLine(id, i) {
+  const o = state.orders.get(id); if (!o) return;
+  const costs = (o.costs || []).map((c, k) => k === i ? { ...c, paid: true } : c);
+  try { await Store.put('orders', id, { ...o, costs }); toast('Pagamento marcado como feito.'); } catch (e) { toast(dbErr(e)); }
+}
+
+/* Cadastros */
+function renderCad(ready) {
+  const isC = state.cadTab === 'clients', q = norm(state.fC.q);
+  $('#newReg').textContent = isC ? 'Novo cliente' : 'Novo prestador';
+  $('#c-q').placeholder = isC ? 'Buscar por nome, contato ou telefone' : 'Buscar por nome, placa ou telefone';
+  $('#cHead').innerHTML = isC ? '<span>Cliente</span><span>Contato</span><span>Resumo</span><span></span>' : '<span>Prestador</span><span>Veículo e contato</span><span>Resumo</span><span></span>';
+  if (!ready) { $('#cList').innerHTML = loading('Carregando cadastros…'); return; }
+  if (isC) {
+    const list = [...state.clients.values()].filter(c => !q || norm([c.name, c.contact, c.phone].join(' ')).includes(q)).sort((a, b) => coll(a.name, b.name));
+    $('#cCount').textContent = `${list.length} de ${state.clients.size} clientes`;
+    $('#cList').innerHTML = list.length ? list.map(c => {
+      const os = orders().filter(o => o.clientId === c.id), act = os.filter(o => ACTIVE.has(o.status));
+      const open = os.filter(o => o.status === 'concluido' || o.status === 'faturado');
+      return `<div class="row crow">
+        <div class="name"><button class="nm" data-action="edit-client" data-id="${esc(c.id)}">${esc(c.name)}</button></div>
+        <div class="meta">${esc([c.contact, c.phone].filter(Boolean).join(' · ') || 'Sem contato cadastrado')}</div>
+        <div class="nums"><span><small>Serviços</small><b>${act.length}</b></span><span><small>Faturado</small><b>${esc(money.format(sumBy(act, priceOf)))}</b></span><span><small>A receber</small><b>${esc(money.format(sumBy(open, priceOf)))}</b></span></div>
+        <div class="act"><button class="btn sm w" data-action="new-order-for" data-id="${esc(c.id)}">Novo serviço</button></div>
+      </div>`;
+    }).join('') : `<div class="empty">${state.clients.size ? 'Nenhum cliente encontrado.' : 'Nenhum cliente cadastrado ainda.'}</div>`;
+  } else {
+    const list = [...state.providers.values()].filter(p => !q || norm([p.name, p.plate, p.phone, p.vehicle].join(' ')).includes(q)).sort((a, b) => coll(a.name, b.name));
+    $('#cCount').textContent = `${list.length} de ${state.providers.size} prestadores`;
+    const lines = orders().filter(o => ACTIVE.has(o.status)).flatMap(o => (o.costs || []).map(c => ({ o, c })));
+    $('#cList').innerHTML = list.length ? list.map(p => {
+      const mine = lines.filter(x => x.c.pid === p.id), cnt = new Set(mine.map(x => x.o.id)).size;
+      const paidSum = mine.filter(x => x.c.paid).reduce((s, x) => s + (Number(x.c.amount) || 0), 0);
+      const open = mine.filter(x => DONE.has(x.o.status) && !x.c.paid).reduce((s, x) => s + (Number(x.c.amount) || 0), 0);
+      return `<div class="row crow">
+        <div class="name"><button class="nm" data-action="edit-provider" data-id="${esc(p.id)}">${esc(p.name)}</button><span class="sku">${esc(KINDS[p.kind] || '')}</span></div>
+        <div class="meta">${esc([p.vehicle, p.plate, p.phone].filter(Boolean).join(' · ') || 'Sem detalhes')}</div>
+        <div class="nums"><span><small>Serviços</small><b>${cnt}</b></span><span><small>Já pago</small><b>${esc(money.format(paidSum))}</b></span><span><small>A pagar</small><b>${esc(money.format(open))}</b></span></div>
+        <div class="act"></div>
+      </div>`;
+    }).join('') : `<div class="empty">${state.providers.size ? 'Nenhum prestador encontrado.' : 'Nenhum prestador cadastrado ainda.'}</div>`;
+  }
+}
+
+/* ---------- Modais ---------- */
+const modalStack = [];
+function openModal(id) { $('#' + id).hidden = false; modalStack.push({ id, prev: document.activeElement }); }
+function closeTop() { const m = modalStack.pop(); if (!m) return; $('#' + m.id).hidden = true; if (m.prev && m.prev.isConnected) m.prev.focus(); }
+function closeById(id) { while (modalStack.length) { const top = modalStack[modalStack.length - 1]; closeTop(); if (top.id === id) break; } }
+let afterSave = null;
+
+/* Serviço */
+function clientOptions(sel) {
+  let h = '<option value="">Escolha o cliente</option>';
+  h += [...state.clients.values()].sort((a, b) => coll(a.name, b.name)).map(c => `<option value="${esc(c.id)}"${c.id === sel ? ' selected' : ''}>${esc(c.name)}</option>`).join('');
+  return h + '<option value="__new">+ Cadastrar novo cliente…</option>';
+}
+function provOptions(sel) {
+  let h = '<option value="">Sem prestador (custo avulso)</option>';
+  for (const k of Object.keys(KINDS)) {
+    const ps = [...state.providers.values()].filter(p => p.kind === k).sort((a, b) => coll(a.name, b.name));
+    if (ps.length) h += `<optgroup label="${esc(KINDS[k])}">` + ps.map(p => `<option value="${esc(p.id)}"${p.id === sel ? ' selected' : ''}>${esc(p.name)}</option>`).join('') + '</optgroup>';
+  }
+  return h + '<option value="__new">+ Cadastrar novo prestador…</option>';
+}
+function renderCosts() {
+  $('#o-costs').innerHTML = state.costRows.length ? state.costRows.map((c, i) => `<div class="cline" data-i="${i}">
+    <select class="c-pid" aria-label="Prestador">${provOptions(c.pid)}</select>
+    <input type="text" class="c-desc" maxlength="60" value="${esc(c.desc)}" placeholder="Função, ex.: frete ou 4 ajudantes" aria-label="Função">
+    <input type="text" class="c-amt" inputmode="decimal" value="${esc(c.amount)}" placeholder="Valor R$" aria-label="Valor combinado">
+    <div class="c-foot"><label class="chk"><input type="checkbox" class="c-paid"${c.paid ? ' checked' : ''}> Já pago ao prestador</label><button type="button" class="btn sm ghost" data-action="rm-cost" data-i="${i}">Remover</button></div>
+  </div>`).join('') : '<p class="hint">Nenhum prestador ou custo lançado. Adicione quem vai executar o serviço.</p>';
+}
+function syncCosts() {
+  state.costRows = $$('#o-costs .cline').map(el => { const p = $('.c-pid', el).value; return { pid: p === '__new' ? '' : p, desc: $('.c-desc', el).value, amount: $('.c-amt', el).value, paid: $('.c-paid', el).checked }; });
+}
+function updateSum() {
+  const price = num($('#o-price').value) || 0;
+  const cost = state.costRows.reduce((s, c) => s + (num(c.amount) || 0), 0), profit = price - cost;
+  $('#o-sum').innerHTML = `Valor cobrado <b>${esc(money.format(price))}</b> · Custo <b>${esc(money.format(cost))}</b> · Lucro <b class="${profit < 0 ? 'bad' : profit > 0 ? 'good' : ''}">${esc(money.format(profit))}</b> (${esc(pct(profit, price))})`;
+}
+function openOrder(id, preset = {}) {
+  const o = id ? state.orders.get(id) : null;
+  $('#om-title').textContent = o ? `${osNum(o)} · ${clientName(o)}` : 'Novo serviço';
+  $('#o-id').value = id || '';
+  $('#o-client').innerHTML = clientOptions(o ? o.clientId : (preset.clientId || ''));
+  $('#o-type').value = o ? o.type : 'descarga';
+  $('#o-status').value = o ? o.status : 'agendado';
+  $('#o-title').value = o ? o.title : '';
+  $('#o-date').value = o ? o.date : (preset.date || todayStr());
+  $('#o-time').value = o ? (o.time || '08:00') : '08:00';
+  $('#o-hours').value = o ? String(o.hours || 4).replace('.', ',') : '4';
+  $('#o-price').value = o ? fmtIn(o.price) : '';
+  $('#o-from').value = o ? (o.from || '') : '';
+  $('#o-to').value = o ? (o.to || '') : '';
+  $('#o-notes').value = o ? (o.notes || '') : '';
+  state.costRows = o ? (o.costs || []).map(c => ({ pid: c.pid || '', desc: c.desc || '', amount: fmtIn(c.amount), paid: !!c.paid })) : [];
+  renderCosts(); updateSum();
+  $('#o-err').textContent = ''; $('#o-warn').hidden = true; $('#oForm').dataset.ack = '';
+  $('#o-share-wrap').hidden = true;
+  $('#o-del').hidden = !o; $('#o-copy').hidden = !o;
+  const del = $('#o-del'); delete del.dataset.armed; del.textContent = 'Excluir'; del.classList.remove('danger');
+  openModal('om');
+  if (!o) setTimeout(() => $('#o-client').focus(), 30);
+}
+async function submitOrder(e) {
+  e.preventDefault();
+  const err = $('#o-err'); err.textContent = '';
+  if (!state.canWrite) return;
+  const fail = t => { err.textContent = t; };
+  syncCosts();
+  const id = $('#o-id').value, clientId = $('#o-client').value, title = $('#o-title').value.trim(), date = $('#o-date').value;
+  if (!clientId || clientId === '__new') return fail('Escolha o cliente ou cadastre um novo.');
+  if (!title) return fail('Descreva o serviço.');
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return fail('Informe a data do serviço.');
+  const time = $('#o-time').value || '08:00';
+  const hours = $('#o-hours').value.trim() === '' ? 4 : num($('#o-hours').value);
+  if (hours == null || hours <= 0 || hours > 72) return fail('A duração precisa ser um número de horas maior que zero.');
+  const price = $('#o-price').value.trim() === '' ? 0 : num($('#o-price').value);
+  if (price == null || price < 0) return fail('O valor cobrado precisa ser zero ou maior.');
+  const costs = [];
+  for (const c of state.costRows) {
+    if (!c.pid && !c.desc.trim() && !c.amount.trim()) continue;
+    const amt = c.amount.trim() === '' ? 0 : num(c.amount);
+    if (amt == null || amt < 0) return fail('Confira os valores dos prestadores: use apenas números.');
+    costs.push({ pid: c.pid || '', desc: c.desc.trim().slice(0, 60), amount: r2(amt), paid: !!c.paid });
+  }
+  const prev = id ? state.orders.get(id) : null;
+  const n = prev ? prev.n : orders().reduce((m, x) => Math.max(m, Number(x.n) || 0), 0) + 1;
+  const doc = { ...(prev || {}), n, clientId, type: $('#o-type').value, title: title.slice(0, 120), date, time, hours, from: $('#o-from').value.trim().slice(0, 120), to: $('#o-to').value.trim().slice(0, 120), price: r2(price), status: $('#o-status').value, costs, notes: $('#o-notes').value.trim().slice(0, 500) };
+  if (!prev) doc.createdAt = new Date().toISOString();
+  const cf = conflictsFor({ ...doc, id: id || '__draft' });
+  if (cf.length && $('#oForm').dataset.ack !== '1') {
+    const lines = cf.map(x => `${provName(x.pid)} já está em ${osNum(x.other)} (${clientName(x.other)}) das ${x.other.time}.`);
+    const w = $('#o-warn'); w.textContent = 'Conflito de agenda: ' + [...new Set(lines)].join(' ') + ' Toque em Salvar de novo para confirmar mesmo assim.'; w.hidden = false;
+    $('#oForm').dataset.ack = '1'; return;
+  }
+  const btn = $('#o-save'); btn.disabled = true;
+  try {
+    const oid = id || Store.newId('orders');
+    await Store.put('orders', oid, { id: oid, ...doc });
+    closeById('om'); toast(prev ? `${osNum(doc)} atualizado.` : `${osNum(doc)} criado.`);
+  } catch (x) { fail(dbErr(x)); }
+  finally { btn.disabled = false; }
+}
+function orderSummary(o) {
+  const names = [...new Set((o.costs || []).map(c => c.pid).filter(Boolean))].map(provName).join(', ');
+  return [`*${osNum(o)} · ${TYPES[o.type] || 'Serviço'}*`, `Cliente: ${clientName(o)}`, `Serviço: ${o.title}`, `Data: ${dayLabel(o.date)} às ${o.time || '08:00'}`,
+    (o.from || o.to) ? `Local: ${[o.from, o.to].filter(Boolean).join(' → ')}` : '', names ? `Equipe e veículos: ${names}` : '', `Valor: ${money.format(priceOf(o))}`, o.notes ? `Obs.: ${o.notes}` : ''].filter(Boolean).join('\n');
+}
+async function copyOrder() {
+  const o = state.orders.get($('#o-id').value); if (!o) return;
+  const text = orderSummary(o);
+  try { await navigator.clipboard.writeText(text); toast('Resumo copiado.'); }
+  catch (e) { const ta = $('#o-share'); ta.value = text; $('#o-share-wrap').hidden = false; ta.focus(); ta.select(); }
+}
+
+/* Cliente */
+function openClient(id, cb) {
+  const c = id ? state.clients.get(id) : null; afterSave = cb || null;
+  $('#cm-title').textContent = c ? 'Editar cliente' : 'Novo cliente';
+  $('#cf-id').value = id || ''; $('#cf-name').value = c ? c.name : ''; $('#cf-contact').value = c ? (c.contact || '') : '';
+  $('#cf-phone').value = c ? (c.phone || '') : ''; $('#cf-notes').value = c ? (c.notes || '') : ''; $('#cf-err').textContent = '';
+  $('#cf-del').hidden = !c; const d = $('#cf-del'); delete d.dataset.armed; d.textContent = 'Excluir cliente'; d.classList.remove('danger');
+  openModal('cm'); setTimeout(() => $('#cf-name').focus(), 30);
+}
+async function submitClient(e) {
+  e.preventDefault(); if (!state.canWrite) return;
+  const err = $('#cf-err'); err.textContent = '';
+  const id = $('#cf-id').value, name = $('#cf-name').value.trim();
+  if (!name) { err.textContent = 'Informe o nome do cliente.'; return; }
+  if ([...state.clients.values()].some(c => c.id !== id && norm(c.name) === norm(name))) { err.textContent = 'Já existe um cliente com esse nome.'; return; }
+  const prev = id ? state.clients.get(id) : null;
+  const doc = { ...(prev || {}), name, contact: $('#cf-contact').value.trim(), phone: $('#cf-phone').value.trim(), notes: $('#cf-notes').value.trim() };
+  if (!prev) doc.createdAt = new Date().toISOString();
+  try {
+    const cid = id || Store.newId('clients'); await Store.put('clients', cid, { id: cid, ...doc });
+    closeById('cm'); toast(prev ? 'Cliente atualizado.' : 'Cliente cadastrado.');
+    if (afterSave) { const f = afterSave; afterSave = null; f(cid); }
+  } catch (x) { err.textContent = dbErr(x); }
+}
+async function deleteClient() {
+  const id = $('#cf-id').value, n = orders().filter(o => o.clientId === id).length;
+  if (n) { $('#cf-err').textContent = `Este cliente tem ${n} serviço(s) lançado(s). Exclua ou troque o cliente nesses serviços primeiro.`; return; }
+  try { await Store.del('clients', id); closeById('cm'); toast('Cliente excluído.'); } catch (x) { $('#cf-err').textContent = dbErr(x); }
+}
+
+/* Prestador */
+function openProvider(id, cb) {
+  const p = id ? state.providers.get(id) : null; afterSave = cb || null;
+  $('#vm-title').textContent = p ? 'Editar prestador' : 'Novo prestador';
+  $('#vf-id').value = id || ''; $('#vf-kind').value = p ? p.kind : 'caminhao'; $('#vf-name').value = p ? p.name : '';
+  $('#vf-vehicle').value = p ? (p.vehicle || '') : ''; $('#vf-plate').value = p ? (p.plate || '') : ''; $('#vf-phone').value = p ? (p.phone || '') : '';
+  $('#vf-price').value = p ? fmtIn(p.defPrice) : ''; $('#vf-notes').value = p ? (p.notes || '') : ''; $('#vf-err').textContent = '';
+  $('#vf-del').hidden = !p; const d = $('#vf-del'); delete d.dataset.armed; d.textContent = 'Excluir prestador'; d.classList.remove('danger');
+  openModal('vm'); setTimeout(() => $('#vf-name').focus(), 30);
+}
+async function submitProvider(e) {
+  e.preventDefault(); if (!state.canWrite) return;
+  const err = $('#vf-err'); err.textContent = '';
+  const id = $('#vf-id').value, name = $('#vf-name').value.trim();
+  if (!name) { err.textContent = 'Informe o nome do prestador.'; return; }
+  const price = $('#vf-price').value.trim() === '' ? 0 : num($('#vf-price').value);
+  if (price == null || price < 0) { err.textContent = 'O valor padrão precisa ser zero ou maior.'; return; }
+  const prev = id ? state.providers.get(id) : null;
+  const doc = { ...(prev || {}), kind: $('#vf-kind').value, name, vehicle: $('#vf-vehicle').value.trim(), plate: $('#vf-plate').value.trim().toUpperCase(), phone: $('#vf-phone').value.trim(), defPrice: r2(price), notes: $('#vf-notes').value.trim() };
+  if (!prev) doc.createdAt = new Date().toISOString();
+  try {
+    const pid = id || Store.newId('providers'); await Store.put('providers', pid, { id: pid, ...doc });
+    closeById('vm'); toast(prev ? 'Prestador atualizado.' : 'Prestador cadastrado.');
+    if (afterSave) { const f = afterSave; afterSave = null; f(pid); }
+  } catch (x) { err.textContent = dbErr(x); }
+}
+async function deleteProvider() {
+  const id = $('#vf-id').value, n = orders().filter(o => (o.costs || []).some(c => c.pid === id)).length;
+  if (n) { $('#vf-err').textContent = `Este prestador aparece em ${n} serviço(s). Troque o prestador nesses serviços antes de excluir.`; return; }
+  try { await Store.del('providers', id); closeById('vm'); toast('Prestador excluído.'); } catch (x) { $('#vf-err').textContent = dbErr(x); }
+}
+
+/* ---------- Exportação ---------- */
+const csvCell = v => { const s = String(v ?? ''); return /[;"\r\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+const csvNum = n => String(r2(n)).replace('.', ',');
+async function saveCsv(filename, rows) {
+  const text = '﻿' + rows.map(r => r.map(csvCell).join(';')).join('\r\n');
+  try {
+    if (!Store.dl) { toast('A exportação não está disponível nesta visualização.'); return; }
+    await Store.dl.save({ filename, data: text }); toast('Arquivo exportado.');
+  } catch (e) { if (e && e.code === 'declined') return; toast('Não foi possível exportar agora.'); }
+}
+function exportOrders() {
+  const rows = [['Número', 'Data', 'Horário', 'Cliente', 'Tipo', 'Descrição', 'Origem ou local', 'Destino', 'Situação', 'Valor cobrado', 'Custos', 'Lucro', 'Prestadores']];
+  for (const o of state.filteredOrders) rows.push([osNum(o), o.date, o.time, clientName(o), TYPES[o.type] || '', o.title, o.from, o.to, (STATUS[o.status] || {}).l, csvNum(priceOf(o)), csvNum(costOf(o)), csvNum(profitOf(o)), [...new Set((o.costs || []).map(c => c.pid).filter(Boolean))].map(provName).join(', ')]);
+  saveCsv(`servicos-gevisa-${todayStr()}.csv`, rows);
+}
+
+/* ---------- Utilidades ---------- */
+let toastT = 0;
+function toast(t) { const el = $('#toast'); el.textContent = t; el.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => { el.hidden = true; }, 3800); }
+function arm(btn, label) {
+  if (btn.dataset.armed) return true;
+  btn.dataset.armed = '1'; btn.dataset.label = btn.textContent; btn.textContent = label; btn.classList.add('danger');
+  setTimeout(() => { if (btn.isConnected && btn.dataset.armed) { delete btn.dataset.armed; btn.textContent = btn.dataset.label; btn.classList.remove('danger'); } }, 4000);
+  return false;
+}
+const VIEWS = ['painel', 'servicos', 'agenda', 'financeiro', 'cadastros'];
+function go(v) {
+  state.view = v;
+  $$('[data-view]').forEach(s => { s.hidden = s.dataset.view !== v; });
+  $$('.tab').forEach(b => { if (b.dataset.go === v) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
+  try { history.replaceState(null, '', '#' + v); } catch (e) { /* ok */ }
+  window.scrollTo(0, 0); render();
+}
+function applyMode() {
+  const el = $('#sync'), t = $('#syncTxt');
+  el.className = 'sync ' + (Store.mode === 'db' ? '' : Store.mode);
+  t.textContent = Store.mode === 'db' ? (state.canWrite ? 'Sincronizado com a equipe' : 'Somente leitura') : Store.mode === 'local' ? 'Só neste navegador' : 'Conectando…';
+  document.body.classList.toggle('ro', !state.canWrite);
+  document.body.classList.toggle('no-dl', !Store.dl);
+}
+async function clearExamples() {
+  const items = [];
+  for (const k of ['orders', 'clients', 'providers']) for (const x of state[k].values()) if (x.example) items.push([k, x.id]);
+  toast('Apagando exemplos…');
+  for (const [k, id] of items) { try { await Store.del(k, id); } catch (e) { toast(dbErr(e)); return; } }
+  toast('Exemplos apagados.');
+}
+function shiftMonth(n) { const [y, m] = state.month.split('-').map(Number); const d = new Date(y, m - 1 + n, 1); state.month = d.getFullYear() + '-' + pad(d.getMonth() + 1); render(); }
+function attn(k) {
+  if (k === 'bill') { state.fS = { q: '', st: 'concluido', per: 'todos' }; syncFilters(); go('servicos'); }
+  else if (k === 'quote') { state.fS = { q: '', st: 'orcamento', per: 'todos' }; syncFilters(); go('servicos'); }
+  else if (k === 'fin') go('financeiro');
+  else if (k === 'agenda') { const c = orders().filter(o => conflictsFor(o).length).sort((a, b) => a.date < b.date ? -1 : 1)[0]; if (c) state.weekStart = mondayOf(parseYmd(c.date)); go('agenda'); }
+}
+function syncFilters() { $('#s-q').value = state.fS.q; fillStatusFilter(); $('#s-st').value = state.fS.st; $('#s-per').value = state.fS.per; }
+
+/* ---------- Eventos ---------- */
+document.addEventListener('click', e => {
+  const g = e.target.closest('[data-go]'); if (g) { go(g.dataset.go); return; }
+  const b = e.target.closest('[data-action]'); if (!b) return;
+  const a = b.dataset.action, id = b.dataset.id;
+  switch (a) {
+    case 'new-order': openOrder(); break;
+    case 'new-order-for': openOrder(null, { clientId: id }); break;
+    case 'edit-order': openOrder(id); break;
+    case 'advance': advance(id); break;
+    case 'pay-line': payLine(id, Number(b.dataset.i)); break;
+    case 'close-modal': closeTop(); break;
+    case 'add-cost': syncCosts(); state.costRows.push({ pid: '', desc: '', amount: '', paid: false }); renderCosts(); updateSum(); { const l = $$('#o-costs .c-pid'); if (l.length) l[l.length - 1].focus(); } break;
+    case 'rm-cost': syncCosts(); state.costRows.splice(Number(b.dataset.i), 1); renderCosts(); updateSum(); break;
+    case 'del-order': if (arm(b, 'Confirmar exclusão')) { const oid = $('#o-id').value; Store.del('orders', oid).then(() => { closeById('om'); toast('Serviço excluído.'); }).catch(x => { $('#o-err').textContent = dbErr(x); }); } break;
+    case 'copy-order': copyOrder(); break;
+    case 'new-reg': if (state.cadTab === 'clients') openClient(); else openProvider(); break;
+    case 'edit-client': openClient(id); break;
+    case 'edit-provider': openProvider(id); break;
+    case 'del-client': if (arm(b, 'Confirmar exclusão')) deleteClient(); break;
+    case 'del-provider': if (arm(b, 'Confirmar exclusão')) deleteProvider(); break;
+    case 'month-prev': shiftMonth(-1); break;
+    case 'month-next': shiftMonth(1); break;
+    case 'month-now': state.month = todayStr().slice(0, 7); render(); break;
+    case 'week-prev': state.weekStart = addDays(state.weekStart, -7); render(); break;
+    case 'week-next': state.weekStart = addDays(state.weekStart, 7); render(); break;
+    case 'week-now': state.weekStart = mondayOf(new Date()); render(); break;
+    case 'more-orders': state.sLimit += 80; render(); break;
+    case 'export-orders': exportOrders(); break;
+    case 'clear-examples': if (arm(b, 'Confirmar: apagar exemplos')) clearExamples(); break;
+    case 'attn': attn(b.dataset.k); break;
+  }
+});
+$$('.modal').forEach(m => m.addEventListener('mousedown', e => { if (e.target === m && modalStack.length && modalStack[modalStack.length - 1].id === m.id) closeTop(); }));
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && modalStack.length) closeTop(); });
+$('#oForm').addEventListener('submit', submitOrder);
+$('#cForm').addEventListener('submit', submitClient);
+$('#vForm').addEventListener('submit', submitProvider);
+$('#oForm').addEventListener('input', () => { $('#o-err').textContent = ''; $('#o-warn').hidden = true; $('#oForm').dataset.ack = ''; if ($('#o-costs').contains(document.activeElement)) syncCosts(); updateSum(); });
+$('#o-client').addEventListener('change', e => {
+  if (e.target.value === '__new') { e.target.value = ''; openClient(null, cid => { $('#o-client').innerHTML = clientOptions(cid); }); }
+});
+$('#o-costs').addEventListener('change', e => {
+  const el = e.target.closest('.cline'); if (!el) return;
+  const i = Number(el.dataset.i);
+  if (e.target.classList.contains('c-pid')) {
+    if (e.target.value === '__new') {
+      e.target.value = ''; syncCosts();
+      openProvider(null, pid => { syncCosts(); if (state.costRows[i]) { state.costRows[i].pid = pid; applyProviderDefaults(i); } renderCosts(); updateSum(); });
+      return;
+    }
+    syncCosts(); applyProviderDefaults(i); renderCosts(); updateSum();
+  } else { syncCosts(); updateSum(); }
+});
+function applyProviderDefaults(i) {
+  const row = state.costRows[i], p = row && state.providers.get(row.pid); if (!p) return;
+  if (!row.amount.trim() && p.defPrice) row.amount = fmtIn(p.defPrice);
+  if (!row.desc.trim()) row.desc = KINDS[p.kind] === KINDS.caminhao ? 'Frete' : (p.kind === 'ajudante' ? 'Ajudantes' : (p.kind === 'empilhadeira' ? 'Empilhadeira' : ''));
+}
+$('#s-q').addEventListener('input', e => { state.fS.q = e.target.value; state.sLimit = 80; render(); });
+$('#s-st').addEventListener('change', e => { state.fS.st = e.target.value; state.sLimit = 80; render(); });
+$('#s-per').addEventListener('change', e => { state.fS.per = e.target.value; state.sLimit = 80; render(); });
+$('#c-q').addEventListener('input', e => { state.fC.q = e.target.value; render(); });
+$$('input[name=cadtab]').forEach(r => r.addEventListener('change', () => { state.cadTab = r.value; render(); }));
+if (window.ResizeObserver) { let lw = 0; new ResizeObserver(() => { const w = $('#chartBox').clientWidth; if (w && w !== lw) { lw = w; if (state.view === 'painel') renderChart(); } }).observe($('#chartBox')); }
+
+/* ---------- Conexão ---------- */
+async function connect() {
+  let db = null;
+  try { db = await (window.claude && window.claude.use ? window.claude.use('db') : null); } catch (e) { db = null; }
+  try { Store.dl = await (window.claude && window.claude.use ? window.claude.use('downloads') : null); } catch (e) { Store.dl = null; }
+  if (db) {
+    Store.db = db; Store.mode = 'db';
+    try { const u = await window.claude.use('user'); if (u && u.can) { const w = await u.can('data.write'); if (w === false) state.canWrite = false; } } catch (e) { /* mantém */ }
+    const onErr = e => { if (e && e.code === 'revoked') { state.canWrite = false; applyMode(); } toast(dbErr(e)); };
+    for (const k of KINDLIST) {
+      db.collection(k).onSnapshot(s => { const m = new Map(); s.docs.forEach(d => m.set(d.id, { id: d.id, ...d.data() })); state[k] = m; state.loaded[k] = true; render(); }, onErr);
+    }
+  } else {
+    Store.mode = 'local'; lsLoad(); for (const k of KINDLIST) state.loaded[k] = true;
+  }
+  applyMode(); render();
+}
+
+const h = (location.hash || '').slice(1);
+go(VIEWS.includes(h) ? h : 'painel');
+applyMode();
+connect();
+})();
+</script>
+
+</body></html>
